@@ -1,11 +1,20 @@
-const express = require("express");
+import express from "express";
+import { readFile } from "fs/promises";
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+const destinations = await readFile(
+    new URL("data/destination.json", import.meta.url),
+    "utf-8"
+);
+
 app.get("/api/v1/destinations", (req, res) => {
-    res.json({ message: "Hello from server!" });
+    res.status(200).json({
+        status: "success",
+        data: { destinations: destinations },
+    });
 });
 
 app.listen(PORT, () => {
