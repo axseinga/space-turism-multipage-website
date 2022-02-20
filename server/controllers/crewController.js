@@ -1,4 +1,3 @@
-import express from "express";
 import { readFile } from "fs/promises";
 
 const crew = JSON.parse(
