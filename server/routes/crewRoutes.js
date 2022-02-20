@@ -1,8 +1,18 @@
 import express from "express";
-import { getAllCrew, getCrewMember } from "../controllers/crewController.js";
+import {
+    createCrewMember,
+    getAllCrew,
+    getCrewMember,
+    updateCrewMember,
+    deleteCrewMember,
+} from "../controllers/crewController.js";
 
 const router = express.Router();
-router.route("/").get(getAllCrew);
-router.route("/:id").get(getCrewMember);
+router.route("/").post(createCrewMember).get(getAllCrew);
+router
+    .route("/:id")
+    .get(getCrewMember)
+    .put(updateCrewMember)
+    .delete(deleteCrewMember);
 
 export { router };
