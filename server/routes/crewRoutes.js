@@ -12,7 +12,7 @@ router.route("/").post(createCrewMember).get(getAllCrew);
 router
     .route("/:id")
     .get(getCrewMember)
-    .put(updateCrewMember)
+    .patch(updateCrewMember)
     .delete(deleteCrewMember);
 
 export { router };

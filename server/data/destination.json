@@ -1,6 +1,5 @@
 [
     {
-        "id": 1,
         "name": "Moon",
         "images": {
             "png": "./assets/destination/image-moon.png",
@@ -11,7 +10,6 @@
         "travel": "3 days"
     },
     {
-        "id": 2,
         "name": "Mars",
         "images": {
             "png": "./assets/destination/image-mars.png",
@@ -22,7 +20,6 @@
         "travel": "9 months"
     },
     {
-        "id": 3,
         "name": "Europa",
         "images": {
             "png": "./assets/destination/image-europa.png",
@@ -33,7 +30,6 @@
         "travel": "3 years"
     },
     {
-        "id": 4,
         "name": "Titan",
         "images": {
             "png": "./assets/destination/image-titan.png",

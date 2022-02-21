@@ -4,6 +4,7 @@ import { router as crewRouter } from "./routes/crewRoutes.js";
 import { router as technologyRouter } from "./routes/technologyRoutes.js";
 
 const app = express();
+app.use(express.json());
 
 app.use("/api/v1/destinations", destinationRouter);
 app.use("/api/v1/crew", crewRouter);
