@@ -9,6 +9,7 @@ const crewSchema = new mongoose.Schema({
     images: {
         png: {
             type: String,
+            required: [true, "A crew member should have a photo"],
         },
         webp: {
             type: String,
@@ -21,6 +22,7 @@ const crewSchema = new mongoose.Schema({
     bio: {
         type: String,
         required: [true, "A crew member must have a bio"],
+        trim: true,
     },
 });
 

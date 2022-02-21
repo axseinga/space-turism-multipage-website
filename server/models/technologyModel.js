@@ -9,6 +9,7 @@ const technologySchema = new mongoose.Schema({
     images: {
         portrait: {
             type: String,
+            required: [true, "A technology should have a photo"],
         },
         landscape: {
             type: String,
@@ -17,6 +18,7 @@ const technologySchema = new mongoose.Schema({
     description: {
         type: String,
         required: [true, "A technology must have a description"],
+        trim: true,
     },
 });
 

@@ -9,6 +9,7 @@ const destinationSchema = new mongoose.Schema({
     images: {
         png: {
             type: String,
+            required: [true, "A destination should have a photo"],
         },
         webp: {
             type: String,
@@ -17,6 +18,7 @@ const destinationSchema = new mongoose.Schema({
     description: {
         type: String,
         required: [true, "A destination must have a description"],
+        trim: true,
     },
     distance: {
         type: String,
