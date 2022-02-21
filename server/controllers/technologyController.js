@@ -1,31 +1,85 @@
-import { readFile } from "fs/promises";
+import { Technology } from "../models/technologyModel.js";
 
-const technologies = JSON.parse(
-    await readFile(new URL("../data/technology.json", import.meta.url), "utf-8")
-);
+export const createTechnology = async (req, res) => {
+    try {
+        const technology = await Technology.create(req.body);
 
-export const getAllTechnologies = (req, res) => {
-    res.status(200).json({
-        status: "success",
-        results: technologies.length,
-        data: { technologies: technologies },
-    });
+        res.status(201).json({
+            status: "success",
+            data: {
+                technology,
+            },
+        });
+    } catch (err) {
+        res.status(400).json({
+            status: "fail",
+            message: err,
+        });
+    }
 };
 
-export const getTechnology = (req, res) => {
-    const id = req.params.id * 1;
+export const getAllTechnologies = async (req, res) => {
+    try {
+        const technology = await Technology.find();
 
-    const technology = technologies.technologies.filter((el) => el.id === id);
+        res.status(200).json({
+            status: "success",
+            results: technology.length,
+            data: { technology },
+        });
+    } catch (err) {
+        res.status(404).json({ status: "fail", message: err });
+    }
+};
 
-    if (!technology) {
+export const getTechnology = async (req, res) => {
+    try {
+        const technology = await Technology.findById(req.params.id);
+
+        res.status(200).json({
+            status: "success",
+            data: { technology },
+        });
+    } catch (err) {
         return res.status(404).json({
             status: "fail",
             message: "Invalid ID",
         });
     }
+};
 
-    res.status(200).json({
-        status: "success",
-        data: { technology },
-    });
+export const updateTechnology = async (req, res) => {
+    try {
+        const technology = await Technology.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true, runValidators: true }
+        );
+
+        res.status(200).json({
+            status: "success",
+            data: { technology },
+        });
+    } catch (err) {
+        return res.status(404).json({
+            status: "fail",
+            message: "Invalid ID",
+        });
+    }
+};
+
+export const deleteTechnology = async (req, res) => {
+    try {
+        await Technology.findByIdAndDelete(req.params.id);
+
+        res.status(204).json({
+            status: "success",
+            data: null,
+        });
+    } catch (err) {
+        return res.status(404).json({
+            status: "fail",
+            message: err,
+        });
+    }
 };

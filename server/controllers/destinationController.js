@@ -1,34 +1,85 @@
-import { readFile } from "fs/promises";
+import { Destination } from "../models/destinationModel.js";
 
-const destinations = JSON.parse(
-    await readFile(
-        new URL("../data/destination.json", import.meta.url),
-        "utf-8"
-    )
-);
+export const createDestination = async (req, res) => {
+    try {
+        const destination = await Destination.create(req.body);
 
-export const getAllDestinations = (req, res) => {
-    res.status(200).json({
-        status: "success",
-        results: destinations.length,
-        data: { destinations: destinations },
-    });
+        res.status(201).json({
+            status: "success",
+            data: {
+                destination,
+            },
+        });
+    } catch (err) {
+        res.status(400).json({
+            status: "fail",
+            message: err,
+        });
+    }
 };
 
-export const getDestination = (req, res) => {
-    const id = req.params.id * 1;
+export const getAllDestinations = async (req, res) => {
+    try {
+        const destination = await Destination.find();
 
-    const destination = destinations.destinations.filter((el) => el.id === id);
+        res.status(200).json({
+            status: "success",
+            results: destination.length,
+            data: { destination },
+        });
+    } catch (err) {
+        res.status(404).json({ status: "fail", message: err });
+    }
+};
 
-    if (!destination) {
+export const getDestination = async (req, res) => {
+    try {
+        const destination = await Destination.findById(req.params.id);
+
+        res.status(200).json({
+            status: "success",
+            data: { destination },
+        });
+    } catch (err) {
         return res.status(404).json({
             status: "fail",
             message: "Invalid ID",
         });
     }
+};
 
-    res.status(200).json({
-        status: "success",
-        data: { destination },
-    });
+export const updateDestination = async (req, res) => {
+    try {
+        const destination = await Destination.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true, runValidators: true }
+        );
+
+        res.status(200).json({
+            status: "success",
+            data: { destination },
+        });
+    } catch (err) {
+        return res.status(404).json({
+            status: "fail",
+            message: "Invalid ID",
+        });
+    }
+};
+
+export const deleteDestination = async (req, res) => {
+    try {
+        await Destination.findByIdAndDelete(req.params.id);
+
+        res.status(204).json({
+            status: "success",
+            data: null,
+        });
+    } catch (err) {
+        return res.status(404).json({
+            status: "fail",
+            message: err,
+        });
+    }
 };

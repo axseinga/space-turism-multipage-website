@@ -2,12 +2,12 @@ import { Crew } from "../models/crewModel.js";
 
 export const createCrewMember = async (req, res) => {
     try {
-        const newCrewMember = await Crew.create(req.body);
+        const crewMember = await Crew.create(req.body);
 
         res.status(201).json({
             status: "success",
             data: {
-                crewMember: newCrewMember,
+                crewMember,
             },
         });
     } catch (err) {
