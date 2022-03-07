@@ -4,10 +4,10 @@ import { Nav } from './Nav';
 
 export const Sidebar = () => {
   const menuItems = [
-    { name: 'Home', href: '#' },
-    { name: 'Destination', href: '#' },
-    { name: 'Crew', href: '#' },
-    { name: 'Technology', href: '#' },
+    { name: 'Home', href: '/' },
+    { name: 'Destination', href: '/destination' },
+    { name: 'Crew', href: '/crew' },
+    { name: 'Technology', href: '/technology' },
   ];
   return (
     <StyledSidebar>

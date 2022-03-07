@@ -1,3 +1,3 @@
 import styled from 'styled-components';
 
-export const StyledSidebar = styled.main``;
+export const StyledMain = styled.main``;

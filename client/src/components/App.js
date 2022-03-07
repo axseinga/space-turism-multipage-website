@@ -1,11 +1,13 @@
 import { GlobalStyle } from '../styles/globalStyle';
-import { StyledApp } from './styled/App.styled';
+import { BrowserRouter } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../styles/theme';
+import { StyledApp } from './styled/App.styled';
+import { AppRoutes } from '../routes/Routes';
 import { Sidebar } from './Sidebar';
 import { Main } from './Main';
 import { getData } from '../services/manageAPI';
-import { useState, useEffect } from 'react';
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -22,8 +24,12 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <StyledApp>
         <GlobalStyle />
-        <Sidebar />
-        <Main />
+        <BrowserRouter>
+          <Sidebar />
+          <Main>
+            <AppRoutes />
+          </Main>
+        </BrowserRouter>
       </StyledApp>
     </ThemeProvider>
   );

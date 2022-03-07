@@ -1,4 +1,5 @@
 import { StyledNav } from './styled/Nav.styled';
+import { StyledNavLink } from './styled/NavLink.styled';
 
 export const Nav = ({ items }) => {
   return (
@@ -6,10 +7,10 @@ export const Nav = ({ items }) => {
       <ul>
         {items.map((item, index) => (
           <li key={`${item.name}_${item.index}`}>
-            <a href={item.href}>
+            <StyledNavLink to={item.href}>
               <span>{`0${index}`}</span>
               {item.name}
-            </a>
+            </StyledNavLink>
           </li>
         ))}
       </ul>
