@@ -2,6 +2,8 @@ import { GlobalStyle } from '../styles/globalStyle';
 import { StyledApp } from './styled/App.styled';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../styles/theme';
+import { Sidebar } from './Sidebar';
+import { Main } from './Main';
 import { getData } from '../services/manageAPI';
 import { useState, useEffect } from 'react';
 
@@ -20,7 +22,8 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <StyledApp>
         <GlobalStyle />
-        <div className="App">hello world</div>
+        <Sidebar />
+        <Main />
       </StyledApp>
     </ThemeProvider>
   );
