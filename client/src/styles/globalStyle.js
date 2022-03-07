@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize';
 import bgImgHomeDesktop from '../assets/home/background-home-desktop.jpg';
+import reset from 'styled-reset';
 
 export const GlobalStyle = createGlobalStyle`
-${normalize};
+${reset};
 
 * {
     box-sizing: border-box;

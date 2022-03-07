@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledSidebar = styled.header`
   display: flex;
   justify-content: space-between;
-  margin: 3.5rem 0rem 7rem 6.5rem;
+  margin: 3.5rem 0 0 6.5rem;
   height: min-content;
 
   &::after {

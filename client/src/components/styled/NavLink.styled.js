@@ -4,11 +4,11 @@ import styled from 'styled-components';
 export const StyledNavLink = styled(NavLink)`
   font-size: 2rem;
   color: ${({ theme }) => theme.colors.white};
-  font-family: ${({ theme }) => theme.fonts.headers};
+  font-family: ${({ theme }) => theme.fonts.text}, serif;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
   text-decoration: none;
-  padding-bottom: 4rem;
+  padding-bottom: 3.5rem;
 
   &.active {
     border-bottom: 3px solid ${({ theme }) => theme.colors.white};
@@ -19,7 +19,7 @@ export const StyledNavLink = styled(NavLink)`
   }
 
   & span {
-    margin-right: 8px;
+    margin-right: 10px;
     font-weight: 700;
   }
 `;

@@ -11,7 +11,8 @@ export const theme = {
     whiteTransparent: 'hsla(0,0%,100%, .05)',
   },
   fonts: {
-    headers: 'Barlow Condensed', //sans-serif
-    text: 'Bellafair', //serif
+    text: 'Barlow Condensed, sans-serif',
+    text2: 'Barlow, sans-serif',
+    header: 'Bellefair, serif',
   },
 };

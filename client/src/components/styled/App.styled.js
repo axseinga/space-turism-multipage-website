@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledApp = styled.div`
-  display: grid;
-  grid-template-rows: 20% 80%;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
 `;
