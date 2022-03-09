@@ -10,6 +10,14 @@ export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   padding-bottom: 3.5rem;
 
+  @media only screen and (max-width: 75em) {
+    font-size: 1.8rem;
+  }
+
+  @media only screen and (max-width: 56.25em) {
+    padding-bottom: 5px;
+  }
+
   &.active {
     border-bottom: 3px solid ${({ theme }) => theme.colors.white};
   }

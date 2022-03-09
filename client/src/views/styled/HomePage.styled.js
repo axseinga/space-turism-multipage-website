@@ -3,19 +3,39 @@ import styled from 'styled-components';
 export const StyledHomePage = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: 1fr 3fr 2fr 1fr;
+  grid-template-columns: 1fr 1fr 3fr 2fr 1fr;
   padding: 2rem;
   place-items: center;
   color: ${({ theme }) => theme.colors.fontLight};
   font-family: ${({ theme }) => theme.fonts.text};
   margin-top: 6rem;
-  padding: 0 20rem;
+  padding: 0 15rem;
+
+  @media only screen and (max-width: 75em) {
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr;
+    text-align: center;
+    margin: 8rem 20rem 2rem 20rem;
+    gap: 3rem;
+    padding: 0;
+  }
 
   & div {
+    grid-column: 2/3;
+
+    @media only screen and (max-width: 75em) {
+      grid-column: 1/2;
+      grid-row: 1/2;
+    }
+
     & h1 {
       font-size: 3rem;
       letter-spacing: 4.75px;
       font-weight: 400;
+
+      @media only screen and (max-width: 75em) {
+        font-size: 2.5rem;
+      }
 
       & span {
         font-size: 14rem;
@@ -24,6 +44,11 @@ export const StyledHomePage = styled.div`
         color: ${({ theme }) => theme.colors.white};
         letter-spacing: 15px;
         line-height: 1.5;
+
+        @media only screen and (max-width: 75em) {
+          font-size: 12rem;
+          line-height: 1.3;
+        }
       }
     }
 
@@ -35,7 +60,7 @@ export const StyledHomePage = styled.div`
   }
 
   & button {
-    grid-column: 3/4;
+    grid-column: 4/5;
     cursor: pointer;
     border-radius: 50%;
     width: 30rem;
@@ -46,6 +71,13 @@ export const StyledHomePage = styled.div`
     font-family: ${({ theme }) => theme.fonts.header};
     border: none;
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+
+    @media only screen and (max-width: 75em) {
+      grid-column: 1/2;
+      grid-row: 2/3;
+      width: 25rem;
+      height: 25rem;
+    }
 
     &:hover {
       animation: pulse 2s infinite;
